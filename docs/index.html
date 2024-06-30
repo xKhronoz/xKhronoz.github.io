@@ -1,18 +1,26 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Yee Kit's Portfolio" />
     <title>Yee Kit - Portfolio</title>
+    <meta name="description" content="Yee Kit's Portfolio" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
     <script
       src="https://kit.fontawesome.com/f52efa84cf.js"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-gray-100 text-gray-800">
-    <header class="bg-white shadow">
+  <body
+    class="items-center bg-gradient-to-r from-gray-200 from-10% via-yellow-50 via-55% to-indigo-100 to-90% dark:from-gray-900 dark:from-10% dark:via-indigo-950 dark:via-55% dark:to-emerald-950 dark:to-90%"
+  >
+    <header class="bg-gray-100 shadow-md">
       <div
         class="container mx-auto py-4 px-6 flex items-center justify-between"
       >
@@ -30,27 +38,37 @@
         </div>
         <nav>
           <ul class="flex space-x-4">
-            <li>
-              <a href="#about" class="flex items-center"
-                ><i class="fas fa-user mr-2"></i> About</a
+            <li
+              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+            >
+              <a href="#about" class="hover:underline"
+                ><i class="fas fa-user mr-2"></i>About</a
               >
             </li>
-            <li>
-              <a href="#projects" class="flex items-center"
-                ><i class="fas fa-code mr-2"></i> Projects</a
+            <li
+              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+            >
+              <a href="#projects" class="hover:underline"
+                ><i class="fas fa-code mr-2"></i>Projects</a
               >
             </li>
-            <li>
-              <a href="#contact" class="flex items-center"
-                ><i class="fas fa-envelope mr-2"></i> Contact</a
+            <li
+              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+            >
+              <a href="#contact" class="hover:underline"
+                ><i class="fas fa-envelope mr-2"></i>Contact</a
               >
+            </li>
+            <!-- Theme Toggle Button -->
+            <li class="flex items-center hover:scale-110 duration-150">
+              <button id="theme-toggle" class="focus:outline-none"></button>
             </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <section id="about" class="py-12">
+    <section id="about" class="py-12 dark:text-white">
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-4">Hello there, I am Yee Kit</h2>
         <p class="mb-4">
@@ -64,7 +82,7 @@
       </div>
     </section>
 
-    <section id="projects" class="py-12">
+    <section id="projects" class="py-12 dark:text-white">
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-8">Projects</h2>
         <div class="project mb-8">
@@ -81,9 +99,9 @@
             <a
               href="https://smart-retrieval-demo.vercel.app/"
               target="_blank"
-              class="flex items-center"
+              class="flex items-center hover:underline"
             >
-              View Project <i class="fas fa-external-link-alt ml-1"></i>
+              View Project <i class="fas fa-external-link-alt ml-2"></i>
             </a>
           </div>
         </div>
@@ -91,13 +109,13 @@
       </div>
     </section>
 
-    <section id="contact" class="py-12">
+    <section id="contact" class="py-12 dark:text-white">
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
         <a
           href="https://github.com/xkhronoz"
           target="_blank"
-          class="flex items-center"
+          class="flex items-center hover:underline mb-4"
         >
           <svg
             height="32"
@@ -106,7 +124,7 @@
             version="1.1"
             width="32"
             data-view-component="true"
-            class="octicon octicon-mark-github mr-2"
+            class="dark:fill-white mr-2"
           >
             <path
               d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
@@ -118,9 +136,46 @@
     </section>
 
     <footer class="bg-gray-200 py-6">
-      <div class="container mx-auto px-6">
-        <p class="text-center">&copy; 2024 Yee Kit. All rights reserved.</p>
+      <div
+        class="px-6 flex items-center justify-center"
+      >
+        <div class="px-6 flex-auto">
+          <p class="text-center">&copy; 2024 Yee Kit. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   </body>
+
+  <script>
+    // Check local storage for theme preference and apply it
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentTheme =
+        localStorage.getItem("theme") ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.classList.add(currentTheme);
+      document.getElementById("theme-toggle").innerHTML = `${
+        currentTheme === "dark"
+          ? '<i class="fas fa-moon"></i>'
+          : '<i class="fas fa-sun"></i>'
+      }`;
+
+      // Toggle theme when button is clicked
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("click", function () {
+          const newTheme = document.documentElement.classList.contains("dark")
+            ? "light"
+            : "dark";
+          document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", newTheme);
+          this.innerHTML = `${
+            newTheme === "dark"
+              ? '<i class="fas fa-moon"></i>'
+              : '<i class="fas fa-sun"></i>'
+          }`;
+        });
+    });
+  </script>
 </html>

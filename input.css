@@ -5,23 +5,3 @@
 @tailwind utilities;
 
 /* Custom styles */
-
-.theme-dark {
-  --bg-color: #1a202c;
-  --text-color: #cbd5e0;
-}
-
-.theme-light {
-  --bg-color: #f7fafc;
-  --text-color: #1a202c;
-}
-
-body.theme-dark {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-body.theme-light {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
