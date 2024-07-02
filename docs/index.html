@@ -18,46 +18,63 @@
     ></script>
   </head>
   <body
-    class="items-center bg-gradient-to-r from-gray-200 from-10% via-yellow-50 via-55% to-indigo-100 to-90% dark:from-gray-900 dark:from-10% dark:via-indigo-950 dark:via-55% dark:to-emerald-950 dark:to-90%"
+    class="items-center bg-gradient-to-r from-gray-200 from-10% via-yellow-50 via-55% to-indigo-100 to-90% dark:from-gray-900 dark:from-10% dark:to-indigo-950 dark:to-90%"
   >
-    <header class="bg-gray-100 shadow-md">
-      <div
-        class="container mx-auto py-4 px-6 flex items-center justify-between"
-      >
+    <header class="mx-4 md:mx-32 lg:mx-64 mt-2 lg:mt-4 flex bg-white dark:bg-slate-300 shadow-md rounded-lg">
+      <div class="mx-2 lg:mx-6 py-4 px-6 flex flex-auto items-center justify-between">
         <div class="flex items-center gap-2">
           <!-- Gravatar Profile Icon -->
           <img
-            class="rounded-full h-12 w-12"
+            class="rounded-full lg:h-12 lg:w-12 mr-1 h-8 w-8"
             src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de"
             alt="Profile Image"
           />
-          <div>
+          <div class="hidden md:inline">
             <h1 class="text-2xl font-bold">Yee Kit</h1>
             <p class="text-sm">Bsc Computing Science Undergrad</p>
           </div>
         </div>
-        <nav>
+
+        <!-- Burger Menu Button for Mobile -->
+        <div class="lg:hidden">
+          <button
+            id="menu-toggle"
+            class="focus:outline-none flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-800 hover:border-gray-800"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden lg:flex space-x-4">
           <ul class="flex space-x-4">
             <li
-              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+              class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1"
             >
-              <a href="#about" class="hover:underline"
-                ><i class="fas fa-user mr-2"></i>About</a
-              >
+              <a href="#about">
+                <i class="fas fa-user mr-2"></i>
+                <span class="text-sm lg:text-base hover:underline">About</span>
+              </a>
             </li>
             <li
-              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+              class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1"
             >
-              <a href="#projects" class="hover:underline"
-                ><i class="fas fa-code mr-2"></i>Projects</a
-              >
+              <a href="#projects">
+                <i class="fas fa-code mr-2"></i>
+                <span class="text-sm lg:text-base hover:underline"
+                  >Projects</span
+                >
+              </a>
             </li>
             <li
-              class="flex items-center hover:bg-blue-200 transition-shadow duration-75 rounded-lg p-1"
+              class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1"
             >
-              <a href="#contact" class="hover:underline"
-                ><i class="fas fa-envelope mr-2"></i>Contact</a
-              >
+              <a href="#contact">
+                <i class="fas fa-envelope mr-2"></i>
+                <span class="text-sm lg:text-base hover:underline"
+                  >Contact</span
+                >
+              </a>
             </li>
             <!-- Theme Toggle Button -->
             <li class="flex items-center hover:scale-110 duration-150">
@@ -65,81 +82,170 @@
             </li>
           </ul>
         </nav>
+
+        <!-- Sidebar Menu Overlay -->
+        <div
+          id="sidebar-menu"
+          class="fixed inset-y-0 right-0 z-50 bg-white dark:bg-slate-300 w-64 shadow-lg transform translate-x-full lg:hidden"
+        >
+          <div class="p-4">
+            <ul class="space-y-2">
+              <li
+                class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2"
+              >
+                <div class="flex items-center justify-between">
+                  <a href="#about">
+                    <i class="fas fa-user mr-2"></i>
+                    <span class="text-sm lg:text-base hover:underline"
+                      >About</span
+                    >
+                  </a>
+                </div>
+              </li>
+              <li
+                class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2"
+              >
+                <div class="flex items-center justify-between">
+                  <a href="#projects">
+                    <i class="fas fa-code mr-2"></i>
+                    <span class="text-sm lg:text-base hover:underline"
+                      >Projects</span
+                    >
+                  </a>
+                </div>
+              </li>
+              <li
+                class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2"
+              >
+                <div class="flex items-center justify-between">
+                  <a href="#contact">
+                    <i class="fas fa-envelope mr-2"></i>
+                    <span class="text-sm lg:text-base hover:underline"
+                      >Contact</span
+                    >
+                  </a>
+                </div>
+              </li>
+              <!-- Theme Toggle Button -->
+              <li class="flex items-center hover:scale-110 duration-150 p-2">
+                <div class="flex items-center justify-between">
+                  <button
+                    id="theme-toggle-sidebar"
+                    class="focus:outline-none"
+                  ></button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Overlay Toggle Button -->
+        <div
+          id="overlay-toggle"
+          class="fixed inset-0 z-40 bg-gray-800 bg-opacity-50 hidden lg:hidden"
+        ></div>
       </div>
     </header>
 
-    <section id="about" class="py-12 dark:text-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-4">Hello there, I am Yee Kit</h2>
-        <p class="mb-4">
-          I am currently a student. My interests include Software Development,
-          Networking, Cyber Security, and the Cloud.
-        </p>
-        <p class="mb-4">
-          I enjoy doing Full Stack Development and tinkering with hardware and
-          software.
-        </p>
-      </div>
-    </section>
-
-    <section id="projects" class="py-12 dark:text-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-8">Projects</h2>
-        <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2">Smart Retrieval</h3>
+    <div class="my-12 mx-4 md:mx-32 lg:mx-64 border border-gray-300 rounded-2xl shadow-lg dark:shadow-xl">
+      <section id="about" class="py-12 dark:text-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-semibold mb-4">Hello there, I am Yee Kit</h2>
           <p class="mb-2">
-            A Full Stack Large Language Model (LLM) Chatbot Web Application for
-            Information Retrieval
+            I am currently a student. My interests include Software Development,
+            Networking, Cyber Security, and the Cloud.
           </p>
-          <p class="mb-4">
-            Technologies used: React, Flask, OpenAI, Supabase, Hugging Face
-            Spaces, Docker, Vercel
+          <p>
+            I enjoy doing Full Stack Development and tinkering with hardware and
+            software.
           </p>
-          <div class="flex items-center mb-4">
-            <a
-              href="https://smart-retrieval-demo.vercel.app/"
-              target="_blank"
-              class="flex items-center hover:underline"
-            >
-              View Project <i class="fas fa-external-link-alt ml-2"></i>
-            </a>
-          </div>
         </div>
-        <!-- Add more projects as needed -->
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="py-12 dark:text-white">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
-        <a
-          href="https://github.com/xkhronoz"
-          target="_blank"
-          class="flex items-center hover:underline mb-4"
-        >
-          <svg
-            height="32"
-            aria-hidden="true"
-            viewBox="0 0 16 16"
-            version="1.1"
-            width="32"
-            data-view-component="true"
-            class="dark:fill-white mr-2"
+      <section id="projects" class="py-12 dark:text-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-semibold mb-8">Projects</h2>
+          <div class="project mb-8">
+            <h3 class="text-xl font-semibold mb-2 underline">
+              Smart Retrieval
+            </h3>
+            <p class="mb-2">
+              A Full Stack Large Language Model (LLM) Chatbot Web Application
+              for Information Retrieval
+            </p>
+            <p class="mb-4">
+              Technologies used: React, Flask, OpenAI, Supabase, Hugging Face
+              Spaces, Docker, Vercel
+            </p>
+            <hr
+              class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto"
+            />
+            <div class="flex items-center mb-4">
+              <a
+                href="https://github.com/digitalbuiltenvironment/Smart-Retrieval"
+                target="_blank"
+                class="flex items-center mr-2"
+              >
+                <span class="mr-2 hover:underline">View Project</span>
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a
+                href="https://smart-retrieval-demo.vercel.app"
+                target="_blank"
+                class="flex items-center hover:underline"
+              >
+                <span class="mr-2 hover:underline">View Demo</span>
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project mb-8">
+            <h3 class="text-xl font-semibold mb-2 underline">
+              SSH GeoIP Filter
+            </h3>
+            <p class="mb-2">
+              A SSH GeoIP Filtering script using MaxMind GeoIP2 & GeoLite2 via
+              mmdblookup.
+            </p>
+            <p class="mb-4">
+              Technologies used: shell, MaxMind GeoIP2, GeoLite2, mmdblookup
+            </p>
+            <hr
+              class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto"
+            />
+            <div class="flex items-center mb-4">
+              <a
+                href="https://github.com/xKhronoz/SSH-GeoIP-Filter"
+                target="_blank"
+                class="flex items-center mr-2"
+              >
+                <span class="mr-2 hover:underline">View Project</span>
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Add more projects as needed -->
+        </div>
+      </section>
+
+      <section id="contact" class="py-12 dark:text-white">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
+          <a
+            href="https://github.com/xkhronoz"
+            target="_blank"
+            class="flex items-center mb-4"
           >
-            <path
-              d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"
-            ></path>
-          </svg>
-          GitHub
-        </a>
-      </div>
-    </section>
+            <i class="fab fa-github mr-2 fa-xl"></i>
+            <span class="hover:underline">Github</span>
+          </a>
+        </div>
+      </section>
+    </div>
 
-    <footer class="bg-gray-200 py-6">
-      <div
-        class="px-6 flex items-center justify-center"
-      >
-        <div class="px-6 flex-auto">
+    <footer class="mx-4 md:mx-32 lg:mx-64 mb-2 lg:mb-4 bg-white dark:bg-slate-300 py-6 shadow-md rounded-lg">
+      <div class="px-6 flex flex-auto items-center justify-center">
+        <div class="px-6">
           <p class="text-center">&copy; 2024 Yee Kit. All rights reserved.</p>
         </div>
       </div>
@@ -160,6 +266,11 @@
           ? '<i class="fas fa-moon"></i>'
           : '<i class="fas fa-sun"></i>'
       }`;
+      document.getElementById("theme-toggle-sidebar").innerHTML = `${
+        currentTheme === "dark"
+          ? '<i class="fas fa-moon mr-2"></i><span class="text-sm lg:text-base hover:underline">Dark Mode</span>'
+          : '<i class="fas fa-sun mr-2"></i><span class="text-sm lg:text-base hover:underline">Light Mode</span>'
+      }`;
 
       // Toggle theme when button is clicked
       document
@@ -175,7 +286,50 @@
               ? '<i class="fas fa-moon"></i>'
               : '<i class="fas fa-sun"></i>'
           }`;
+          document.getElementById("theme-toggle-sidebar").innerHTML = `${
+            newTheme === "dark"
+              ? '<i class="fas fa-moon mr-2"></i><span class="text-sm lg:text-base hover:underline">Dark Mode</span>'
+              : '<i class="fas fa-sun mr-2"></i><span class="text-sm lg:text-base hover:underline">Light Mode</span>'
+          }`;
         });
+      document
+        .getElementById("theme-toggle-sidebar")
+        .addEventListener("click", function () {
+          const newTheme = document.documentElement.classList.contains("dark")
+            ? "light"
+            : "dark";
+          document.documentElement.classList.toggle("dark");
+          localStorage.setItem("theme", newTheme);
+          this.innerHTML = `${
+            newTheme === "dark"
+              ? '<i class="fas fa-moon mr-2"></i><span class="text-sm lg:text-base hover:underline">Dark Mode</span>'
+              : '<i class="fas fa-sun mr-2"></i><span class="text-sm lg:text-base hover:underline">Light Mode</span>'
+          }`;
+          document.getElementById("theme-toggle").innerHTML = `${
+            newTheme === "dark"
+              ? '<i class="fas fa-moon"></i>'
+              : '<i class="fas fa-sun"></i>'
+          }`;
+        });
+    });
+
+    // JavaScript to toggle the mobile menu visibility
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.getElementById("menu-toggle");
+      const sidebarMenu = document.getElementById("sidebar-menu");
+      const overlayToggle = document.getElementById("overlay-toggle");
+
+      menuToggle.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("transform");
+        sidebarMenu.classList.toggle("translate-x-full");
+        overlayToggle.classList.toggle("hidden");
+      });
+
+      overlayToggle.addEventListener("click", function () {
+        sidebarMenu.classList.toggle("transform");
+        sidebarMenu.classList.toggle("translate-x-full");
+        overlayToggle.classList.toggle("hidden");
+      });
     });
   </script>
 </html>
