@@ -189,7 +189,7 @@
                 <i class="fas fa-external-link-alt"></i>
               </a>
               <a
-                href="https://flight-time-calculator.xkhronoz.is-a.dev/"
+                href="https://flight-time-calculator.xkhronoz.dev/"
                 target="_blank"
                 class="flex items-center hover:underline"
               >
@@ -272,6 +272,14 @@
             <i class="fab fa-github mr-2 fa-xl"></i>
             <span class="hover:underline">Github</span>
           </a>
+          <a
+            href="https://linkedin.com/in/goh-yee-kit"
+            target="_blank"
+            class="flex items-center mb-4"
+          >
+            <i class="fab fa-linkedin mr-2 fa-xl"></i>
+            <span class="hover:underline">LinkedIn</span>
+          </a>
         </div>
       </section>
     </div>
@@ -279,7 +287,7 @@
     <footer class="mx-4 md:mx-32 lg:mx-64 mb-2 lg:mb-4 bg-white dark:bg-slate-300 py-6 shadow-md rounded-lg">
       <div class="px-6 flex flex-auto items-center justify-center">
         <div class="px-6">
-          <p class="text-center">&copy; 2024 Yee Kit. All rights reserved.</p>
+          <p class="text-center">&copy; Yee Kit. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -363,6 +371,15 @@
         sidebarMenu.classList.toggle("translate-x-full");
         overlayToggle.classList.toggle("hidden");
       });
+    });
+
+    // Set copyright year automatically
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentYear = new Date().getFullYear();
+      const footerText = document.querySelector("footer p");
+      if (footerText) {
+        footerText.innerHTML = `&copy; ${currentYear} Yee Kit. All rights reserved.`;
+      }
     });
   </script>
 </html>
