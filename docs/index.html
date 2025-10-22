@@ -4,18 +4,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
     <title>Yee Kit - Portfolio</title>
-    <meta name="description" content="Yee Kit's Portfolio" />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de"
-    />
+  
+    <!-- Keep your About text as the meta description -->
+    <meta name="description" content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity, plus tinkering and self-hosting." />
+  
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://xkhronoz.dev/" />
+  
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
+  
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <script
-      src="https://kit.fontawesome.com/f52efa84cf.js"
-      crossorigin="anonymous"
-    ></script>
+  
+    <!-- Open Graph -->
+    <meta property="og:title" content="Yee Kit – Portfolio" />
+    <meta property="og:description" content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-domain.example/" />
+    <meta property="og:image" content="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
+  
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Yee Kit – Portfolio" />
+    <meta name="twitter:description" content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity." />
+    <meta name="twitter:image" content="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
+  
+    <!-- Person schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yee Kit",
+      "description": "BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking, cybersecurity, and self-hosting.",
+      "image": "https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de",
+      "url": "https://your-domain.example/",
+      "sameAs": [
+        "https://github.com/xkhronoz",
+        "https://www.linkedin.com/in/goh-yee-kit"
+      ]
+    }
+    </script>
+  
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
   </head>
   <body
     class="items-center bg-gradient-to-r from-gray-200 from-10% via-yellow-50 via-55% to-indigo-100 to-90% dark:from-gray-900 dark:from-10% dark:to-indigo-950 dark:to-90%"
@@ -31,7 +65,7 @@
           />
           <div class="hidden md:inline">
             <h1 class="text-2xl font-bold">Yee Kit</h1>
-            <p class="text-sm">Bsc Computing Science Undergrad</p>
+            <p class="text-sm">Bsc Computing Science Graduate</p>
           </div>
         </div>
 
@@ -150,22 +184,28 @@
     <div class="my-12 mx-4 md:mx-32 lg:mx-64 border border-gray-300 rounded-2xl shadow-lg dark:shadow-xl">
       <section id="about" class="py-12 dark:text-white">
         <div class="container mx-auto px-6">
-          <h2 class="text-3xl font-semibold mb-4">Hello there, I am Yee Kit</h2>
+          <h2 class="text-3xl font-semibold mb-4">Hey there! My name is Yee Kit!</h2>
           <p class="mb-2">
-            I am currently a student. My interests include Software Development,
-            Networking, Cyber Security, and the Cloud.
+            I am a Bsc Computing Science Graduate. Currently working as a Cloud Engineer ☁️.
+          </p>
+          <p class="mb-2">
+            My interests include Software Development, DevOps,
+            Computer Networking and Cyber Security.
           </p>
           <p>
-            I enjoy doing Full Stack Development and tinkering with hardware and
-            software.
+            I enjoy doing Full Stack Development, tinkering with hardware and
+            software, be it servers, sbc or routers and self-hosting open source projects.
           </p>
         </div>
       </section>
 
-      <section id="projects" class="py-12 dark:text-white">
+      <section id="projects" class="py-12 dark:text-white" data-nosnippet>
         <div class="container mx-auto px-6">
           <h2 class="text-3xl font-semibold mb-8">Projects</h2>
-                    <div class="project mb-8">
+          <p class="mb-2">
+            A list of my projects can be found below.
+          </p>
+          <div class="project mb-8">
             <h3 class="text-xl font-semibold mb-2 underline">
               Flight Time Calculator
             </h3>
@@ -204,7 +244,7 @@
             </h3>
             <p class="mb-2">
               A Full Stack Large Language Model (LLM) Chatbot Web Application
-              for Information Retrieval
+              for Information Retrieval, built as part of my Final Year Project.
             </p>
             <p class="mb-4">
               Technologies used: React, Flask, OpenAI, Supabase, Hugging Face
@@ -261,7 +301,7 @@
         </div>
       </section>
 
-      <section id="contact" class="py-12 dark:text-white">
+      <section id="contact" class="py-12 dark:text-white" data-nosnippet>
         <div class="container mx-auto px-6">
           <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
           <a
