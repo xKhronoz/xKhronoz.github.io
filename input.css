@@ -5,3 +5,9 @@
 
 /* then import Tailwind */
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply text-gray-800 dark:text-white;
+  }
+}
