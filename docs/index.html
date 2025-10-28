@@ -145,16 +145,16 @@
 
       <!-- Burger Menu Button for Mobile -->
       <div class="xl:hidden">
-        <button id="menu-toggle"
-          class="focus:outline-none flex items-center px-3 py-2 border dark:border-gray-500 dark:text-gray-400 rounded hover:text-gray-800 hover:border-gray-800">
+        <button id="menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sidebar-menu"
+          class="flex items-center px-3 py-2 border dark:border-gray-500 dark:text-gray-400 rounded hover:text-gray-800 hover:border-gray-800">
           <i class="fas fa-bars"></i>
         </button>
       </div>
 
       <!-- Floating Menu Panel -->
-      <div id="sidebar-menu" hidden role="menu" aria-labelledby="menu-toggle" class="fixed top-16 right-4 z-50 w-64 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
+      <div id="sidebar-menu" role="menu" hidden class="fixed z-50 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
         opacity-0 scale-95 pointer-events-none transition duration-150
-        lg:hidden">
+        origin-top-right xl:hidden">
         <div class="p-4">
           <ul class="space-y-2">
             <li
@@ -192,7 +192,7 @@
       </div>
 
       <!-- Backdrop -->
-      <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden lg:hidden"></div>
+      <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
     </div>
   </header>
 
@@ -360,34 +360,118 @@
     const sidebarMenu = document.getElementById("sidebar-menu");
     const overlayToggle = document.getElementById("overlay-toggle");
 
+    function positionMenu() {
+      const btn = menuToggle;
+      const menu = sidebarMenu;
+      if (!btn || !menu) return;
+
+      // Show temporarily to measure
+      const wasHidden = menu.hidden;
+      if (wasHidden) menu.hidden = false;
+
+      // Reset size constraints from previous opens
+      menu.style.maxHeight = "";
+      menu.style.overflowY = "";
+
+      const btnRect = btn.getBoundingClientRect();
+
+      // Use visualViewport if available (mobile keyboard/zoom safe)
+      const vw = window.visualViewport?.width || window.innerWidth;
+      const vh = window.visualViewport?.height || window.innerHeight;
+      const gutter = 8; // breathing room from edges
+      const offset = 8; // gap from button
+
+      // Place below, right-aligned by default
+      menu.style.left = "0px";
+      menu.style.top = "0px";
+      const mRect0 = menu.getBoundingClientRect(); // measure natural size
+
+      let left = btnRect.right - mRect0.width;
+      let top = btnRect.bottom + offset;
+      let origin = "top-right";
+
+      // Shift horizontally if overflowing
+      if (left < gutter) left = gutter;
+      if (left + mRect0.width + gutter > vw) left = Math.max(gutter, vw - mRect0.width - gutter);
+
+      // Flip upward if not enough room below
+      if (top + mRect0.height + gutter > vh) {
+        const flipTop = btnRect.top - mRect0.height - offset;
+        if (flipTop >= gutter) {
+          top = flipTop;
+          origin = "bottom-right";
+        } else {
+          // Not enough above or below; clamp height and keep near the button
+          const maxH = Math.min(mRect0.height, vh - gutter * 2);
+          menu.style.maxHeight = `${maxH}px`;
+          menu.style.overflowY = "auto";
+          // Prefer below if more space there, else above
+          const spaceBelow = vh - (btnRect.bottom + offset) - gutter;
+          const spaceAbove = btnRect.top - offset - gutter;
+          if (spaceBelow >= spaceAbove) {
+            top = Math.min(btnRect.bottom + offset, vh - gutter - maxH);
+            origin = "top-right";
+          } else {
+            top = Math.max(gutter, btnRect.top - offset - maxH);
+            origin = "bottom-right";
+          }
+        }
+      }
+
+      // Apply coordinates
+      menu.style.left = `${Math.round(left)}px`;
+      menu.style.top = `${Math.round(top)}px`;
+
+      // Update transform origin (for scale animation)
+      menu.classList.toggle("origin-top-right", origin === "top-right");
+      menu.classList.toggle("origin-bottom-right", origin === "bottom-right");
+
+      if (wasHidden) menu.hidden = true; // restore; openMenu() will unhide
+    }
+
     function openMenu() {
+      positionMenu();
       sidebarMenu.hidden = false;
-      sidebarMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-      sidebarMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      requestAnimationFrame(() => {
+        sidebarMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+        sidebarMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      });
       overlayToggle.classList.remove("hidden");
+      menuToggle.setAttribute("aria-expanded", "true");
     }
 
     function closeMenu() {
       sidebarMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
       sidebarMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
       overlayToggle.classList.add("hidden");
-      setTimeout(() => { sidebarMenu.hidden = true; }, 160);
+      menuToggle.setAttribute("aria-expanded", "false");
+      setTimeout(() => { sidebarMenu.hidden = true; }, 160); // after transition
     }
 
     function isOpen() {
       return sidebarMenu.classList.contains("opacity-100");
     }
 
-    menuToggle?.addEventListener("click", function () {
+    menuToggle?.addEventListener("click", (e) => {
+      e.stopPropagation();
       isOpen() ? closeMenu() : openMenu();
     });
 
-    overlayToggle?.addEventListener("click", closeMenu);
+    // Reposition while open on resize/scroll/zoom/orientation
+    ["scroll", "resize", "orientationchange"].forEach(evt =>
+      window.addEventListener(evt, () => { if (isOpen()) positionMenu(); }, { passive: true })
+    );
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", () => { if (isOpen()) positionMenu(); });
+      window.visualViewport.addEventListener("scroll", () => { if (isOpen()) positionMenu(); });
+    }
 
-    // Close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isOpen()) closeMenu();
+    overlayToggle?.addEventListener("click", closeMenu);
+    document.addEventListener("click", (e) => {
+      if (isOpen() && !sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) closeMenu();
     });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && isOpen()) closeMenu(); });
+
 
     // Close when a menu link is clicked (for smoother UX)
     sidebarMenu.addEventListener("click", (e) => {
