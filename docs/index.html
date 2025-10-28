@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="./css/styles.css">
   </noscript>
 
+  <!-- Font Awesome - load deferred -->
+  <script defer src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
+
   <!-- Open Graph -->
   <meta property="og:title" content="Yee Kit's Portfolio" />
   <meta property="og:description"
@@ -63,10 +66,35 @@
         "https://www.linkedin.com/in/goh-yee-kit"
       ]
     }
-    </script>
+  </script>
 
-  <!-- Font Awesome - load deferred -->
-  <script defer src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
+  <script>
+    (function () {
+      var STORAGE_KEY = 'theme';
+      var DARK = 'dark';
+
+      try {
+        var stored = localStorage.getItem(STORAGE_KEY);
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored ? stored === DARK : prefersDark;
+
+        // Add/remove .dark on <html> *before* CSS loads
+        var docEl = document.documentElement;
+        if (isDark) docEl.classList.add(DARK);
+        else docEl.classList.remove(DARK);
+
+        // Prevent CSS transitions from flashing during this initial set
+        var style = document.createElement('style');
+        style.textContent = '*{transition:none !important}';
+        document.head.appendChild(style);
+        window.addEventListener('load', function () {
+          // remove in next tick after full load
+          setTimeout(function () { style.remove(); }, 0);
+        });
+
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
 </head>
 
 <body class="items-center bg-gray-100 dark:bg-gray-800">
@@ -76,8 +104,8 @@
       <div class="flex items-center gap-2">
         <!-- Gravatar Profile Icon -->
         <img class="rounded-full lg:h-14 lg:w-14 mr-1 h-10 w-10"
-          src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de"
-          alt="Profile Image" />
+          src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=160&d=identicon"
+          width="160" height="160" fetchpriority="high" decoding="async" alt="Profile Image">
         <div class="dark:text-white">
           <h1 class="text-xl md:text-2xl font-bold">Yee Kit</h1>
           <p class="text-xs md:text-sm">Bsc Computing Science Graduate</p>
@@ -85,7 +113,7 @@
       </div>
 
       <!-- Navigation Links -->
-      <nav class="hidden lg:flex space-x-4">
+      <nav class="hidden xl:flex space-x-4">
         <ul class="flex space-x-4">
           <li
             class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
@@ -116,15 +144,15 @@
       </nav>
 
       <!-- Burger Menu Button for Mobile -->
-      <div class="lg:hidden">
+      <div class="xl:hidden">
         <button id="menu-toggle"
-          class="focus:outline-none flex items-center px-3 py-2 border rounded hover:text-gray-800 hover:border-gray-800">
+          class="focus:outline-none flex items-center px-3 py-2 border dark:border-gray-500 dark:text-gray-400 rounded hover:text-gray-800 hover:border-gray-800">
           <i class="fas fa-bars"></i>
         </button>
       </div>
 
       <!-- Floating Menu Panel -->
-      <div id="sidebar-menu" role="menu" aria-labelledby="menu-toggle" class="fixed top-16 right-4 z-50 w-64 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
+      <div id="sidebar-menu" hidden role="menu" aria-labelledby="menu-toggle" class="fixed top-16 right-4 z-50 w-64 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
         opacity-0 scale-95 pointer-events-none transition duration-150
         lg:hidden">
         <div class="p-4">
@@ -333,6 +361,7 @@
     const overlayToggle = document.getElementById("overlay-toggle");
 
     function openMenu() {
+      sidebarMenu.hidden = false;
       sidebarMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
       sidebarMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
       overlayToggle.classList.remove("hidden");
@@ -342,6 +371,7 @@
       sidebarMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
       sidebarMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
       overlayToggle.classList.add("hidden");
+      setTimeout(() => { sidebarMenu.hidden = true; }, 160);
     }
 
     function isOpen() {
