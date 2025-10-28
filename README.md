@@ -8,14 +8,20 @@
 
 ## About <a name = "about"></a>
 
-This is a Github Pages project to display my portfolio and projects. It is a simple website built with HTML and styled with Tailwinds CSS that will be updated as I complete more projects and learn more skills.
+This is a Github Pages project to display my portfolio and projects. It is a simple website built with HTML and styled with Tailwinds CSS, it will be updated as I complete more projects and learn more skills.
 
 ## Getting Started <a name = "getting_started"></a>
 
 Requirements:
 
 - [Node.js](https://nodejs.org/en/)
-- [Tailwind CSS](https://tailwindcss.com/docs/installation) - Follow the instructions on the Tailwind CSS website to install Tailwind CSS via Tailwind CLI using `npm` and `npx`.
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
+
+Install Requirements:
+
+```bash
+npm i
+```
 
 ## Usage <a name = "usage"></a>
 
@@ -27,7 +33,14 @@ Requirements:
 
 After making changes to the HTML or CSS files, you will need to recompile the Tailwind CSS file.
 
-To compile the Tailwind CSS file, run the following command:
+To compile the Tailwind CSS file for deploying (minified css), run the following command:
+
 ```bash
- npx tailwindcss -i ./input.css -o ./docs/css/styles.css
+npm run build:css:prod
+```
+
+To compile the Tailwind CSS file for development/debugging, run the following command:
+
+```bash
+npm run build:css
 ```
