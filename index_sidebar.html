@@ -19,18 +19,8 @@
   <link rel="shortcut icon" type="image/x-icon"
     href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
 
-  <!-- Preconnect to CDNs -->
-  <link rel="preconnect" href="https://gravatar.com" crossorigin>
-  <link rel="dns-prefetch" href="https://gravatar.com">
-  <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
-  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
-
   <!-- CSS -->
-  <link rel="preload" as="style" href="./css/styles.css">
-  <link rel="stylesheet" href="./css/styles.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="./css/styles.css">
-  </noscript>
+  <link rel="stylesheet" href="./css/styles.css" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Yee Kit's Portfolio" />
@@ -65,8 +55,8 @@
     }
     </script>
 
-  <!-- Font Awesome - load deferred -->
-  <script defer src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="items-center bg-gray-100 dark:bg-gray-800">
@@ -75,34 +65,39 @@
     <div class="mx-2 lg:mx-6 py-4 px-6 flex flex-auto items-center justify-between">
       <div class="flex items-center gap-2">
         <!-- Gravatar Profile Icon -->
-        <img class="rounded-full lg:h-14 lg:w-14 mr-1 h-10 w-10"
+        <img class="rounded-full lg:h-12 lg:w-12 mr-1 h-8 w-8"
           src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de"
           alt="Profile Image" />
-        <div class="dark:text-white">
-          <h1 class="text-xl md:text-2xl font-bold">Yee Kit</h1>
-          <p class="text-xs md:text-sm">Bsc Computing Science Graduate</p>
+        <div class="hidden md:inline dark:text-white">
+          <h1 class="text-2xl font-bold">Yee Kit</h1>
+          <p class="text-sm">Bsc Computing Science Graduate</p>
         </div>
+      </div>
+
+      <!-- Burger Menu Button for Mobile -->
+      <div class="lg:hidden">
+        <button id="menu-toggle"
+          class="focus:outline-none flex items-center px-3 py-2 border rounded text-gray-500 border-gray-500 hover:text-gray-800 hover:border-gray-800">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
 
       <!-- Navigation Links -->
       <nav class="hidden lg:flex space-x-4">
         <ul class="flex space-x-4">
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
+          <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1">
             <a href="#about">
               <i class="fas fa-user mr-2 dark:text-white"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">About</span>
             </a>
           </li>
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
+          <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1">
             <a href="#projects">
               <i class="fas fa-code mr-2 dark:text-white"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">Projects</span>
             </a>
           </li>
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
+          <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-1">
             <a href="#contact">
               <i class="fas fa-envelope mr-2 dark:text-white"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">Contact</span>
@@ -115,56 +110,47 @@
         </ul>
       </nav>
 
-      <!-- Burger Menu Button for Mobile -->
-      <div class="lg:hidden">
-        <button id="menu-toggle"
-          class="focus:outline-none flex items-center px-3 py-2 border rounded hover:text-gray-800 hover:border-gray-800">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-
-      <!-- Floating Menu Panel -->
-      <div id="sidebar-menu" role="menu" aria-labelledby="menu-toggle" class="fixed top-16 right-4 z-50 w-64 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
-        opacity-0 scale-95 pointer-events-none transition duration-150
-        lg:hidden">
+      <!-- Sidebar Menu Overlay -->
+      <div id="sidebar-menu"
+        class="fixed inset-y-0 right-0 z-50 bg-white dark:bg-slate-600 w-64 shadow-lg transform translate-x-full lg:hidden">
         <div class="p-4">
           <ul class="space-y-2">
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#about" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
+            <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2">
+              <div class="flex items-center justify-between">
+                <a href="#about">
                   <i class="fas fa-user mr-2 dark:text-white"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">About</span>
-                </span>
-              </a>
+                </a>
+              </div>
             </li>
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#projects" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
+            <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2">
+              <div class="flex items-center justify-between">
+                <a href="#projects">
                   <i class="fas fa-code mr-2 dark:text-white"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">Projects</span>
-                </span>
-              </a>
+                </a>
+              </div>
             </li>
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#contact" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
+            <li class="flex items-center hover:bg-gray-200 transition-shadow duration-75 rounded-lg p-2">
+              <div class="flex items-center justify-between">
+                <a href="#contact">
                   <i class="fas fa-envelope mr-2 dark:text-white"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">Contact</span>
-                </span>
-              </a>
+                </a>
+              </div>
             </li>
+            <!-- Theme Toggle Button -->
             <li class="flex items-center hover:scale-110 duration-150 p-2">
-              <button id="theme-toggle-sidebar" class="focus:outline-none"></button>
+              <div class="flex items-center justify-between">
+                <button id="theme-toggle-sidebar" class="focus:outline-none"></button>
+              </div>
             </li>
           </ul>
         </div>
       </div>
 
-      <!-- Backdrop -->
-      <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden lg:hidden"></div>
+      <!-- Overlay Toggle Button -->
+      <div id="overlay-toggle" class="fixed inset-0 z-40 bg-opacity-50 hidden lg:hidden"></div>
     </div>
   </header>
 
@@ -327,41 +313,21 @@
     document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
     document.getElementById("theme-toggle-sidebar")?.addEventListener("click", toggleTheme);
 
-    // Floating menu toggle
+    // Mobile menu logic
     const menuToggle = document.getElementById("menu-toggle");
     const sidebarMenu = document.getElementById("sidebar-menu");
     const overlayToggle = document.getElementById("overlay-toggle");
 
-    function openMenu() {
-      sidebarMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-      sidebarMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
-      overlayToggle.classList.remove("hidden");
-    }
-
-    function closeMenu() {
-      sidebarMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
-      sidebarMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
-      overlayToggle.classList.add("hidden");
-    }
-
-    function isOpen() {
-      return sidebarMenu.classList.contains("opacity-100");
-    }
-
     menuToggle?.addEventListener("click", function () {
-      isOpen() ? closeMenu() : openMenu();
+      sidebarMenu.classList.toggle("transform");
+      sidebarMenu.classList.toggle("translate-x-full");
+      overlayToggle.classList.toggle("hidden");
     });
 
-    overlayToggle?.addEventListener("click", closeMenu);
-
-    // Close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && isOpen()) closeMenu();
-    });
-
-    // Close when a menu link is clicked (for smoother UX)
-    sidebarMenu.addEventListener("click", (e) => {
-      if (e.target.closest("a")) closeMenu();
+    overlayToggle?.addEventListener("click", function () {
+      sidebarMenu.classList.toggle("transform");
+      sidebarMenu.classList.toggle("translate-x-full");
+      overlayToggle.classList.toggle("hidden");
     });
 
     // Footer year

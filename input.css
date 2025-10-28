@@ -1,7 +1,7 @@
-/* styles.css */
+/* input.css */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* define a class-based dark variant */
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom styles */
+/* then import Tailwind */
+@import "tailwindcss";

@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./input.css -o ./docs/css/styles.css",
+    "build:css:prod": "NODE_ENV=production npx tailwindcss -i ./input.css -o ./docs/css/styles.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "@tailwindcss/postcss": "^4.1.16",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-nesting": "^13.0.2",
+    "tailwindcss": "^4.1.16"
+  }
+}
