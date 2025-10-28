@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -8,31 +7,86 @@
 
   <title>Yee Kit's Portfolio</title>
 
-  <!-- Keep your About text as the meta description -->
+  <!-- Meta -->
   <meta name="description"
     content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity, plus tinkering and self-hosting." />
-
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://xkhronoz.dev/" />
-
-  <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon"
     href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
 
-  <!-- Preconnect to CDNs -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://gravatar.com" crossorigin>
   <link rel="dns-prefetch" href="https://gravatar.com">
   <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
   <link rel="dns-prefetch" href="https://kit.fontawesome.com">
 
-  <!-- CSS -->
+  <!-- Non-blocking CSS load -->
   <link rel="preload" as="style" href="./css/styles.css">
   <link rel="stylesheet" href="./css/styles.css" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="./css/styles.css">
   </noscript>
 
-  <!-- Font Awesome - load deferred -->
+  <!-- Small helper styles: skip link, icon shim, scrollbar gutter, initial bg -->
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    html {
+      scrollbar-gutter: stable both-edges;
+    }
+
+    body {
+      background: #f3f4f6;
+      margin: 0;
+    }
+
+    .dark body {
+      background: #1f2937;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden
+    }
+
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+      width: auto;
+      height: auto;
+      padding: .5rem 1rem;
+      background: #fff;
+      color: #000;
+      border-radius: .25rem;
+      z-index: 1000
+    }
+
+    /* Icon reserve (prevents shift before FA JS swaps in SVG) */
+    i.fas,
+    i.fab,
+    i.far,
+    i.fa-solid,
+    i.fa-regular,
+    i.fa-brands {
+      display: inline-block;
+      width: 1.25rem;
+      height: 1.25rem;
+      line-height: 1;
+      vertical-align: -0.125em;
+    }
+
+    header h1 {
+      white-space: nowrap;
+    }
+  </style>
+
+  <!-- Font Awesome (deferred) -->
   <script defer src="https://kit.fontawesome.com/f52efa84cf.js" crossorigin="anonymous"></script>
 
   <!-- Open Graph -->
@@ -52,116 +106,106 @@
   <meta name="twitter:image"
     content="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
 
-  <!-- Person schema -->
+  <!-- Schema -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Yee Kit",
-      "description": "BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking, cybersecurity, and self-hosting.",
-      "image": "https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de",
-      "url": "https://xkhronoz.dev/",
-      "sameAs": [
-        "https://github.com/xkhronoz",
-        "https://www.linkedin.com/in/goh-yee-kit"
-      ]
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yee Kit",
+    "description": "BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking, cybersecurity, and self-hosting.",
+    "image": "https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de",
+    "url": "https://xkhronoz.dev/",
+    "sameAs": [
+      "https://github.com/xkhronoz",
+      "https://www.linkedin.com/in/goh-yee-kit"
+    ]
+  }
   </script>
 
+  <!-- Prepaint theme (no flash) -->
   <script>
     (function () {
-      var STORAGE_KEY = 'theme';
-      var DARK = 'dark';
-
+      var KEY = 'theme', DARK = 'dark';
       try {
-        var stored = localStorage.getItem(STORAGE_KEY);
+        var stored = localStorage.getItem(KEY);
         var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         var isDark = stored ? stored === DARK : prefersDark;
-
-        // Add/remove .dark on <html> *before* CSS loads
-        var docEl = document.documentElement;
-        if (isDark) docEl.classList.add(DARK);
-        else docEl.classList.remove(DARK);
-
-        // Prevent CSS transitions from flashing during this initial set
-        var style = document.createElement('style');
-        style.textContent = '*{transition:none !important}';
-        document.head.appendChild(style);
-        window.addEventListener('load', function () {
-          // remove in next tick after full load
-          setTimeout(function () { style.remove(); }, 0);
-        });
-
-      } catch (e) { /* ignore */ }
+        var el = document.documentElement;
+        if (isDark) el.classList.add(DARK); else el.classList.remove(DARK);
+        var s = document.createElement('style'); s.textContent = '*{transition:none!important}';
+        document.head.appendChild(s);
+        window.addEventListener('load', function () { setTimeout(function () { s.remove(); }, 0); });
+      } catch (_) { }
     })();
   </script>
 </head>
 
 <body class="items-center bg-gray-100 dark:bg-gray-800">
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
   <header
-    class="mx-4 md:mx-32 lg:mx-64 mt-2 lg:mt-4 flex bg-white dark:bg-slate-700 border border-gray-600 shadow-md rounded-lg">
+    class="mx-4 md:mx-32 lg:mx-64 mt-2 lg:mt-4 flex bg-white dark:bg-slate-700 border border-gray-600 shadow-md rounded-lg min-h-[4.5rem]">
     <div class="mx-2 lg:mx-6 py-4 px-6 flex flex-auto items-center justify-between">
       <div class="flex items-center gap-2">
-        <!-- Gravatar Profile Icon -->
         <img class="rounded-full lg:h-14 lg:w-14 mr-1 h-10 w-10"
           src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=160&d=identicon"
-          width="160" height="160" fetchpriority="high" decoding="async" alt="Profile Image">
+          width="160" height="160" style="aspect-ratio:1/1" fetchpriority="high" decoding="async" alt="Profile Image">
         <div class="dark:text-white">
           <h1 class="text-xl md:text-2xl font-bold">Yee Kit</h1>
           <p class="text-xs md:text-sm">Bsc Computing Science Graduate</p>
         </div>
       </div>
 
-      <!-- Navigation Links -->
-      <nav class="hidden xl:flex space-x-4">
+      <!-- Desktop nav -->
+      <nav class="hidden xl:flex space-x-4" aria-label="Primary">
         <ul class="flex space-x-4">
           <li
             class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
             <a href="#about">
-              <i class="fas fa-user mr-2 dark:text-white"></i>
+              <i class="fas fa-user fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">About</span>
             </a>
           </li>
           <li
             class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
             <a href="#projects">
-              <i class="fas fa-code mr-2 dark:text-white"></i>
+              <i class="fas fa-code fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">Projects</span>
             </a>
           </li>
           <li
             class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
             <a href="#contact">
-              <i class="fas fa-envelope mr-2 dark:text-white"></i>
+              <i class="fas fa-envelope fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
               <span class="text-sm lg:text-base hover:underline dark:text-white">Contact</span>
             </a>
           </li>
-          <!-- Theme Toggle Button -->
           <li class="flex items-center hover:scale-110 duration-150">
-            <button id="theme-toggle" class="focus:outline-none"></button>
+            <button aria-label="Toggle Theme" id="theme-toggle" class="focus:outline-none"></button>
           </li>
         </ul>
       </nav>
 
-      <!-- Burger Menu Button for Mobile -->
+      <!-- Burger -->
       <div class="xl:hidden">
-        <button id="menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="sidebar-menu"
+        <button id="menu-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-nav"
           class="flex items-center px-3 py-2 border dark:border-gray-500 dark:text-gray-400 rounded hover:text-gray-800 hover:border-gray-800">
-          <i class="fas fa-bars"></i>
+          <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
         </button>
       </div>
 
-      <!-- Floating Menu Panel -->
-      <div id="sidebar-menu" role="menu" hidden class="fixed z-50 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
-        opacity-0 scale-95 pointer-events-none transition duration-150
-        origin-top-right xl:hidden">
+      <!-- Floating mobile nav (positioned by JS) -->
+      <nav id="mobile-nav" aria-label="Mobile" hidden class="fixed z-50 w-64 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
+                  opacity-0 scale-95 pointer-events-none transition duration-150 origin-top-right xl:hidden">
         <div class="p-4">
           <ul class="space-y-2">
             <li
               class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
               <a href="#about" class="flex items-center justify-between w-full">
                 <span class="flex items-center">
-                  <i class="fas fa-user mr-2 dark:text-white"></i>
+                  <i class="fas fa-user fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">About</span>
                 </span>
               </a>
@@ -170,7 +214,7 @@
               class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
               <a href="#projects" class="flex items-center justify-between w-full">
                 <span class="flex items-center">
-                  <i class="fas fa-code mr-2 dark:text-white"></i>
+                  <i class="fas fa-code fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">Projects</span>
                 </span>
               </a>
@@ -179,7 +223,7 @@
               class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
               <a href="#contact" class="flex items-center justify-between w-full">
                 <span class="flex items-center">
-                  <i class="fas fa-envelope mr-2 dark:text-white"></i>
+                  <i class="fas fa-envelope fa-fw mr-2 dark:text-white" aria-hidden="true"></i>
                   <span class="text-sm lg:text-base hover:underline dark:text-white">Contact</span>
                 </span>
               </a>
@@ -189,108 +233,82 @@
             </li>
           </ul>
         </div>
-      </div>
+      </nav>
 
       <!-- Backdrop -->
       <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
     </div>
   </header>
 
-  <div
+  <!-- Main (single landmark) -->
+  <main id="main-content" tabindex="-1"
     class="my-12 mx-4 md:mx-32 lg:mx-64 bg-white dark:bg-slate-700 border border-gray-600 rounded-2xl shadow-lg dark:shadow-xl">
     <section id="about" class="py-12 dark:text-white">
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-4">Hey 👋! My name is Yee Kit!</h2>
-        <p class="mb-2">
-          I am a Bsc Computing Science Graduate. Currently working as a Cloud Engineer ☁️ 🧑🏻‍💻.
-        </p>
-        <p class="mb-2">
-          My interests include Software Development, DevOps,
-          Computer Networking and Cyber Security.
-        </p>
-        <p>
-          I enjoy doing Full Stack Development, tinkering with hardware and
-          software, be it servers, sbc or routers and self-hosting open source projects.
-        </p>
+        <p class="mb-2">I am a Bsc Computing Science Graduate. Currently working as a Cloud Engineer ☁️ 🧑🏻‍💻.</p>
+        <p class="mb-2">My interests include Software Development, DevOps, Computer Networking and Cyber Security.</p>
+        <p>I enjoy doing Full Stack Development, tinkering with hardware and software, be it servers, sbc or routers and
+          self-hosting open source projects.</p>
       </div>
     </section>
 
     <section id="projects" class="py-12 dark:text-white" data-nosnippet>
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-4">Projects</h2>
-        <p class="mb-8">
-          A list of my projects can be found below.
-        </p>
+        <p class="mb-8">A list of my projects can be found below.</p>
+
         <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">
-            Flight Time Calculator
-          </h3>
-          <p class="mb-2">
-            A Next.js + Prisma web app for calculating flight times, transit times and total flight duration between
-            airports, supporting mutiple legs/flights in a journey.
-            Includes timezone/DST awareness, airport database with reseed, admin UI, audit logs, and snapshots.
-          </p>
-          <p class="mb-4">
-            Technologies used: Next.js, Prisma, Vercel
-          </p>
+          <h3 class="text-xl font-semibold mb-2 underline">Flight Time Calculator</h3>
+          <p class="mb-2">A Next.js + Prisma web app for calculating flight times, transit times and total flight
+            duration between airports, supporting mutiple legs/flights in a journey. Includes timezone/DST awareness,
+            airport database with reseed, admin UI, audit logs, and snapshots.</p>
+          <p class="mb-4">Technologies used: Next.js, Prisma, Vercel</p>
           <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
           <div class="flex items-center mb-4">
             <a href="https://github.com/xKhronoz/Flight-Time-Calculator" target="_blank" class="flex items-center mr-2">
               <span class="mr-2 hover:underline">View Project</span>
-              <i class="fas fa-external-link-alt"></i>
+              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
             </a>
             <a href="https://flight-time-calculator.xkhronoz.dev/" target="_blank"
               class="flex items-center hover:underline">
               <span class="mr-2 hover:underline">View Demo</span>
-              <i class="fas fa-external-link-alt"></i>
+              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
             </a>
           </div>
         </div>
+
         <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">
-            Smart Retrieval
-          </h3>
-          <p class="mb-2">
-            A Full Stack Large Language Model (LLM) Chatbot Web Application
-            for Information Retrieval, built as part of my Final Year Project.
-          </p>
-          <p class="mb-4">
-            Technologies used: React, Flask, OpenAI, Supabase, Hugging Face
-            Spaces, Docker, Vercel
-          </p>
+          <h3 class="text-xl font-semibold mb-2 underline">Smart Retrieval</h3>
+          <p class="mb-2">A Full Stack Large Language Model (LLM) Chatbot Web Application for Information Retrieval,
+            built as part of my Final Year Project.</p>
+          <p class="mb-4">Technologies used: React, Flask, OpenAI, Supabase, Hugging Face Spaces, Docker, Vercel</p>
           <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
           <div class="flex items-center mb-4">
             <a href="https://github.com/digitalbuiltenvironment/Smart-Retrieval" target="_blank"
               class="flex items-center mr-2">
               <span class="mr-2 hover:underline">View Project</span>
-              <i class="fas fa-external-link-alt"></i>
+              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
             </a>
             <a href="https://smart-retrieval-demo.vercel.app" target="_blank" class="flex items-center hover:underline">
               <span class="mr-2 hover:underline">View Demo</span>
-              <i class="fas fa-external-link-alt"></i>
+              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
             </a>
           </div>
         </div>
+
         <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">
-            SSH GeoIP Filter
-          </h3>
-          <p class="mb-2">
-            A SSH GeoIP Filtering script using MaxMind GeoIP2 & GeoLite2 via
-            mmdblookup.
-          </p>
-          <p class="mb-4">
-            Technologies used: shell, MaxMind GeoIP2, GeoLite2, mmdblookup
-          </p>
+          <h3 class="text-xl font-semibold mb-2 underline">SSH GeoIP Filter</h3>
+          <p class="mb-2">A SSH GeoIP Filtering script using MaxMind GeoIP2 & GeoLite2 via mmdblookup.</p>
+          <p class="mb-4">Technologies used: shell, MaxMind GeoIP2, GeoLite2, mmdblookup</p>
           <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
           <div class="flex items-center mb-4">
             <a href="https://github.com/xKhronoz/SSH-GeoIP-Filter" target="_blank" class="flex items-center mr-2">
               <span class="mr-2 hover:underline">View Project</span>
-              <i class="fas fa-external-link-alt"></i>
+              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
             </a>
           </div>
         </div>
-        <!-- Add more projects as needed -->
       </div>
     </section>
 
@@ -298,17 +316,18 @@
       <div class="container mx-auto px-6">
         <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
         <a href="https://github.com/xkhronoz" target="_blank" class="flex items-center mb-4">
-          <i class="fab fa-github mr-2 fa-xl"></i>
+          <i class="fab fa-github fa-fw mr-2 fa-xl" aria-hidden="true"></i>
           <span class="hover:underline">Github</span>
         </a>
         <a href="https://linkedin.com/in/goh-yee-kit" target="_blank" class="flex items-center mb-4">
-          <i class="fab fa-linkedin mr-2 fa-xl"></i>
+          <i class="fab fa-linkedin fa-fw mr-2 fa-xl" aria-hidden="true"></i>
           <span class="hover:underline">LinkedIn</span>
         </a>
       </div>
     </section>
-  </div>
+  </main>
 
+  <!-- Footer -->
   <footer
     class="mx-4 md:mx-32 lg:mx-64 mb-2 lg:mb-4 bg-white dark:bg-slate-700 border border-gray-600 py-6 shadow-md rounded-lg">
     <div class="px-6 flex flex-auto items-center justify-center">
@@ -317,175 +336,139 @@
       </div>
     </div>
   </footer>
-</body>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Decide initial theme
-    const stored = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = stored ? stored === "dark" : prefersDark;
+  <!-- Overlay -->
+  <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
 
-    // Apply strictly by toggling ONLY the "dark" class on <html>
-    document.documentElement.classList.toggle("dark", isDark);
+  <!-- App JS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Theme setup
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const isDark = stored ? stored === "dark" : prefersDark;
+      document.documentElement.classList.toggle("dark", isDark);
 
-    // Helpers to update button labels
-    function renderButtons(dark) {
-      const themeBtn = document.getElementById("theme-toggle");
-      const themeBtnSide = document.getElementById("theme-toggle-sidebar");
-      if (themeBtn) {
-        themeBtn.innerHTML = dark ? '<i class="fas fa-moon dark:text-white"></i>' : '<i class="fas fa-sun dark:text-white"></i>';
-      }
-      if (themeBtnSide) {
-        themeBtnSide.innerHTML = dark
-          ? '<i class="fas fa-moon mr-2 dark:text-white"></i><span class="text-sm lg:text-base hover:underline dark:text-white">Dark Mode</span>'
-          : '<i class="fas fa-sun mr-2 dark:text-white"></i><span class="text-sm lg:text-base hover:underline dark:text-white">Light Mode</span>';
-      }
-    }
-    renderButtons(isDark);
-
-    // Click handlers toggle the "dark" class and persist
-    function toggleTheme() {
-      const nowDark = !document.documentElement.classList.contains("dark");
-      document.documentElement.classList.toggle("dark", nowDark);
-      localStorage.setItem("theme", nowDark ? "dark" : "light");
-      renderButtons(nowDark);
-    }
-
-    document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
-    document.getElementById("theme-toggle-sidebar")?.addEventListener("click", toggleTheme);
-
-    // Floating menu toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const sidebarMenu = document.getElementById("sidebar-menu");
-    const overlayToggle = document.getElementById("overlay-toggle");
-
-    function positionMenu() {
-      const btn = menuToggle;
-      const menu = sidebarMenu;
-      if (!btn || !menu) return;
-
-      // Show temporarily to measure
-      const wasHidden = menu.hidden;
-      if (wasHidden) menu.hidden = false;
-
-      // Reset size constraints from previous opens
-      menu.style.maxHeight = "";
-      menu.style.overflowY = "";
-
-      const btnRect = btn.getBoundingClientRect();
-
-      // Use visualViewport if available (mobile keyboard/zoom safe)
-      const vw = window.visualViewport?.width || window.innerWidth;
-      const vh = window.visualViewport?.height || window.innerHeight;
-      const gutter = 8; // breathing room from edges
-      const offset = 8; // gap from button
-
-      // Place below, right-aligned by default
-      menu.style.left = "0px";
-      menu.style.top = "0px";
-      const mRect0 = menu.getBoundingClientRect(); // measure natural size
-
-      let left = btnRect.right - mRect0.width;
-      let top = btnRect.bottom + offset;
-      let origin = "top-right";
-
-      // Shift horizontally if overflowing
-      if (left < gutter) left = gutter;
-      if (left + mRect0.width + gutter > vw) left = Math.max(gutter, vw - mRect0.width - gutter);
-
-      // Flip upward if not enough room below
-      if (top + mRect0.height + gutter > vh) {
-        const flipTop = btnRect.top - mRect0.height - offset;
-        if (flipTop >= gutter) {
-          top = flipTop;
-          origin = "bottom-right";
-        } else {
-          // Not enough above or below; clamp height and keep near the button
-          const maxH = Math.min(mRect0.height, vh - gutter * 2);
-          menu.style.maxHeight = `${maxH}px`;
-          menu.style.overflowY = "auto";
-          // Prefer below if more space there, else above
-          const spaceBelow = vh - (btnRect.bottom + offset) - gutter;
-          const spaceAbove = btnRect.top - offset - gutter;
-          if (spaceBelow >= spaceAbove) {
-            top = Math.min(btnRect.bottom + offset, vh - gutter - maxH);
-            origin = "top-right";
-          } else {
-            top = Math.max(gutter, btnRect.top - offset - maxH);
-            origin = "bottom-right";
-          }
+      function renderButtons(dark) {
+        const themeBtn = document.getElementById("theme-toggle");
+        const themeBtnSide = document.getElementById("theme-toggle-sidebar");
+        if (themeBtn) themeBtn.innerHTML = dark ? '<i class="fas fa-moon fa-fw dark:text-white" aria-hidden="true"></i>' : '<i class="fas fa-sun fa-fw dark:text-white" aria-hidden="true"></i>';
+        if (themeBtnSide) {
+          themeBtnSide.innerHTML = dark
+            ? '<i class="fas fa-moon fa-fw mr-2 dark:text-white" aria-hidden="true"></i><span class="text-sm lg:text-base hover:underline dark:text-white">Dark Mode</span>'
+            : '<i class="fas fa-sun fa-fw mr-2 dark:text-white" aria-hidden="true"></i><span class="text-sm lg:text-base hover:underline dark:text-white">Light Mode</span>';
         }
       }
+      renderButtons(isDark);
 
-      // Apply coordinates
-      menu.style.left = `${Math.round(left)}px`;
-      menu.style.top = `${Math.round(top)}px`;
+      function toggleTheme() {
+        const nowDark = !document.documentElement.classList.contains("dark");
+        document.documentElement.classList.toggle("dark", nowDark);
+        localStorage.setItem("theme", nowDark ? "dark" : "light");
+        renderButtons(nowDark);
+      }
+      document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
+      document.getElementById("theme-toggle-sidebar")?.addEventListener("click", toggleTheme);
 
-      // Update transform origin (for scale animation)
-      menu.classList.toggle("origin-top-right", origin === "top-right");
-      menu.classList.toggle("origin-bottom-right", origin === "bottom-right");
+      // Mobile menu positioning/behavior
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      const overlay = document.getElementById("overlay-toggle");
 
-      if (wasHidden) menu.hidden = true; // restore; openMenu() will unhide
-    }
+      function positionMenu() {
+        const btn = menuToggle, menu = mobileNav;
+        if (!btn || !menu) return;
 
-    function openMenu() {
-      positionMenu();
-      sidebarMenu.hidden = false;
-      requestAnimationFrame(() => {
-        sidebarMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
-        sidebarMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+        const wasHidden = menu.hidden;
+        if (wasHidden) menu.hidden = false;
+
+        menu.style.maxHeight = ""; menu.style.overflowY = "";
+        menu.style.left = "0px"; menu.style.top = "0px";
+
+        const btnRect = btn.getBoundingClientRect();
+        const mRect0 = menu.getBoundingClientRect();
+        const vw = window.visualViewport?.width || window.innerWidth;
+        const vh = window.visualViewport?.height || window.innerHeight;
+        const gutter = 8, offset = 8;
+
+        let left = btnRect.right - mRect0.width;
+        let top = btnRect.bottom + offset;
+        let origin = "top-right";
+
+        if (left < gutter) left = gutter;
+        if (left + mRect0.width + gutter > vw) left = Math.max(gutter, vw - mRect0.width - gutter);
+
+        if (top + mRect0.height + gutter > vh) {
+          const flipTop = btnRect.top - mRect0.height - offset;
+          if (flipTop >= gutter) {
+            top = flipTop; origin = "bottom-right";
+          } else {
+            const maxH = Math.min(mRect0.height, vh - gutter * 2);
+            menu.style.maxHeight = `${maxH}px`; menu.style.overflowY = "auto";
+            const spaceBelow = vh - (btnRect.bottom + offset) - gutter;
+            const spaceAbove = btnRect.top - offset - gutter;
+            if (spaceBelow >= spaceAbove) { top = Math.min(btnRect.bottom + offset, vh - gutter - maxH); origin = "top-right"; }
+            else { top = Math.max(gutter, btnRect.top - offset - maxH); origin = "bottom-right"; }
+          }
+        }
+
+        menu.style.left = `${Math.round(left)}px`;
+        menu.style.top = `${Math.round(top)}px`;
+        menu.classList.toggle("origin-top-right", origin === "top-right");
+        menu.classList.toggle("origin-bottom-right", origin === "bottom-right");
+
+        if (wasHidden) menu.hidden = true;
+      }
+
+      function openMenu() {
+        positionMenu();
+        mobileNav.hidden = false;
+        requestAnimationFrame(() => {
+          mobileNav.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+          mobileNav.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+        });
+        overlay.classList.remove("hidden");
+        menuToggle.setAttribute("aria-expanded", "true");
+      }
+
+      function closeMenu() {
+        mobileNav.classList.add("opacity-0", "scale-95", "pointer-events-none");
+        mobileNav.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+        overlay.classList.add("hidden");
+        menuToggle.setAttribute("aria-expanded", "false");
+        setTimeout(() => { mobileNav.hidden = true; }, 160);
+      }
+
+      function isOpen() { return mobileNav.classList.contains("opacity-100"); }
+
+      menuToggle?.addEventListener("click", (e) => { e.stopPropagation(); isOpen() ? closeMenu() : openMenu(); });
+      overlay?.addEventListener("click", closeMenu);
+      document.addEventListener("click", (e) => { if (isOpen() && !mobileNav.contains(e.target) && !menuToggle.contains(e.target)) closeMenu(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && isOpen()) closeMenu(); });
+
+      // Reposition while open
+      ["scroll", "resize", "orientationchange"].forEach(evt =>
+        window.addEventListener(evt, () => { if (isOpen()) positionMenu(); }, { passive: true })
+      );
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => { if (isOpen()) positionMenu(); });
+        window.visualViewport.addEventListener("scroll", () => { if (isOpen()) positionMenu(); });
+      }
+
+      // Close when a mobile nav link is clicked
+      mobileNav.addEventListener("click", (e) => { if (e.target.closest("a")) closeMenu(); });
+
+      // Footer year
+      const y = new Date().getFullYear();
+      const footerP = document.querySelector("footer p");
+      if (footerP) footerP.innerHTML = `&copy; ${y} Yee Kit. All rights reserved.`;
+
+      // Optional: focus main when using skip link
+      document.querySelector('a[href="#main-content"]')?.addEventListener("click", () => {
+        document.getElementById("main-content")?.focus();
       });
-      overlayToggle.classList.remove("hidden");
-      menuToggle.setAttribute("aria-expanded", "true");
-    }
-
-    function closeMenu() {
-      sidebarMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
-      sidebarMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
-      overlayToggle.classList.add("hidden");
-      menuToggle.setAttribute("aria-expanded", "false");
-      setTimeout(() => { sidebarMenu.hidden = true; }, 160); // after transition
-    }
-
-    function isOpen() {
-      return sidebarMenu.classList.contains("opacity-100");
-    }
-
-    menuToggle?.addEventListener("click", (e) => {
-      e.stopPropagation();
-      isOpen() ? closeMenu() : openMenu();
     });
-
-    // Reposition while open on resize/scroll/zoom/orientation
-    ["scroll", "resize", "orientationchange"].forEach(evt =>
-      window.addEventListener(evt, () => { if (isOpen()) positionMenu(); }, { passive: true })
-    );
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", () => { if (isOpen()) positionMenu(); });
-      window.visualViewport.addEventListener("scroll", () => { if (isOpen()) positionMenu(); });
-    }
-
-    overlayToggle?.addEventListener("click", closeMenu);
-    document.addEventListener("click", (e) => {
-      if (isOpen() && !sidebarMenu.contains(e.target) && !menuToggle.contains(e.target)) closeMenu();
-    });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && isOpen()) closeMenu(); });
-
-
-    // Close when a menu link is clicked (for smoother UX)
-    sidebarMenu.addEventListener("click", (e) => {
-      if (e.target.closest("a")) closeMenu();
-    });
-
-    // Footer year
-    const currentYear = new Date().getFullYear();
-    const footerText = document.querySelector("footer p");
-    if (footerText) {
-      footerText.innerHTML = `&copy; ${currentYear} Yee Kit. All rights reserved.`;
-    }
-  });
-</script>
-
+  </script>
+</body>
 
 </html>
