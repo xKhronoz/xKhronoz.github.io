@@ -9,7 +9,7 @@
 
   <!-- Meta -->
   <meta name="description"
-    content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity, plus tinkering and self-hosting." />
+    content="Part-Time Developer and Full-Time Cloud Engineer focused on cloud-native systems, DevSecOps, software development, networking, cybersecurity, and self-hosting." />
   <link rel="canonical" href="https://xkhronoz.dev/" />
   <link rel="shortcut icon" type="image/x-icon"
     href="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
@@ -27,91 +27,7 @@
   <link rel="preload" as="style" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/styles.css" />
 
-  <!-- Small helper styles: skip link, icon shim, scrollbar gutter, initial bg -->
-  <style>
-    /* Make Tailwind v4 borders work immediately */
-    :root,
-    :host,
-    *,
-    ::before,
-    ::after {
-      --tw-border-style: solid;
-    }
-
-    /* Minimal preflight (no global margin reset on text) */
-    *,
-    ::before,
-    ::after {
-      box-sizing: border-box;
-    }
-
-    ol,
-    ul,
-    menu {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    img,
-    svg,
-    video,
-    canvas,
-    iframe {
-      display: block;
-    }
-
-    img,
-    video {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Stabilize scrollbar to avoid horizontal nudge */
-    html {
-      scrollbar-gutter: stable both-edges;
-    }
-
-    /* Critical visibility to avoid header CLS while CSS loads */
-    @media (min-width:1280px) {
-      #primary-nav {
-        display: flex;
-      }
-
-      #burger-wrap {
-        display: none;
-      }
-    }
-
-    @media (max-width:1279.98px) {
-      #primary-nav {
-        display: none;
-      }
-
-      #burger-wrap {
-        display: block;
-      }
-    }
-
-    /* Icon shim so FA swap doesn’t nudge text */
-    i.fas,
-    i.fab,
-    i.far,
-    i.fa-solid,
-    i.fa-regular,
-    i.fa-brands {
-      display: inline-block;
-      width: 1.25rem;
-      height: 1.25rem;
-      line-height: 1;
-      vertical-align: -0.125em;
-    }
-
-    /* Keep header height stable */
-    header h1 {
-      white-space: nowrap;
-    }
-  </style>
+  <!-- Custom CSS is loaded from ./css/styles.css -->
 
 
   <!-- Font Awesome (deferred) -->
@@ -120,7 +36,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Yee Kit's Portfolio" />
   <meta property="og:description"
-    content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity." />
+    content="Part-Time Developer and Full-Time Cloud Engineer focused on cloud-native systems, DevSecOps, software development, networking, cybersecurity, and self-hosting." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://xkhronoz.dev/" />
   <meta property="og:image"
@@ -130,7 +46,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yee Kit's Portfolio" />
   <meta name="twitter:description"
-    content="BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking and cybersecurity." />
+    content="Part-Time Developer and Full-Time Cloud Engineer focused on cloud-native systems, DevSecOps, software development, networking, cybersecurity, and self-hosting." />
   <meta name="twitter:image"
     content="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de" />
 
@@ -140,11 +56,12 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Yee Kit",
-    "description": "BSc Computing Science graduate & Cloud Engineer. I enjoy full-stack development, DevOps, networking, cybersecurity, and self-hosting.",
+    "description": "Part-Time Developer and Full-Time Cloud Engineer focused on cloud-native systems, DevSecOps, software development, networking, cybersecurity, and self-hosting.",
     "image": "https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de",
     "url": "https://xkhronoz.dev/",
     "sameAs": [
       "https://github.com/xkhronoz",
+      "https://gitlab.com/khronoz",
       "https://www.linkedin.com/in/goh-yee-kit"
     ]
   }
@@ -169,212 +86,268 @@
 </head>
 
 <body class="bg-gray-100 dark:bg-gray-800">
-  <!-- Header -->
-  <header
-    class="mx-4 md:mx-32 lg:mx-64 mt-2 lg:mt-4 flex bg-white dark:bg-slate-700 border border-gray-600 shadow-md rounded-lg min-h-18">
-    <div class="py-4 px-6 flex flex-auto items-center justify-between">
-      <div class="flex items-center gap-2">
-        <img class="rounded-full mr-1 h-12 w-12 sm:h-16 sm:w-16 xl:h-[70px] xl:w-[70px]"
-          src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=48&d=identicon"
-          srcset="
+  <div class="site-shell">
+    <!-- Header -->
+    <header class="glass-panel site-header flex rounded-2xl min-h-18">
+      <div class="py-4 px-6 flex flex-auto items-center justify-between">
+        <div class="flex items-center gap-2">
+          <img class="rounded-full mr-1 h-12 w-12 sm:h-16 sm:w-16 xl:h-[70px] xl:w-[70px]"
+            src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=48&d=identicon"
+            srcset="
                 https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=48&d=identicon 48w,
                 https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=64&d=identicon 64w,
                 https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=96&d=identicon 96w,
                 https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=140&d=identicon 140w
               " sizes="(min-width:1280px) 70px, (min-width:640px) 64px, 48px" width="70" height="70"
-          style="aspect-ratio:1/1" alt="Profile Image" decoding="async" fetchpriority="high" />
-        <div id="header-title">
-          <h1 class="text-xl md:text-2xl font-bold">Yee Kit</h1>
-          <p class="text-xs md:text-sm">Bsc Computing Science Graduate</p>
+            style="aspect-ratio:1/1" alt="Profile Image" decoding="async" fetchpriority="high" />
+          <div id="header-title">
+            <h1 class="text-xl md:text-2xl font-bold">Yee Kit</h1>
+            <p class="text-xs md:text-sm">Part-Time Developer | Full-Time Cloud Engineer</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Desktop nav -->
-      <nav id="primary-nav" class="space-x-4" aria-label="Primary">
-        <ul class="flex space-x-4">
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
-            <a href="#about">
-              <i class="fas fa-user fa-fw" aria-hidden="true"></i>
-              <span class="text-sm lg:text-base">About</span>
-            </a>
-          </li>
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
-            <a href="#projects">
-              <i class="fas fa-code fa-fw" aria-hidden="true"></i>
-              <span class="text-sm lg:text-base">Projects</span>
-            </a>
-          </li>
-          <li
-            class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-1">
-            <a href="#contact">
-              <i class="fas fa-envelope fa-fw" aria-hidden="true"></i>
-              <span class="text-sm lg:text-base">Contact</span>
-            </a>
-          </li>
-          <li class="flex items-center hover:scale-110 duration-150">
-            <button aria-label="Toggle Theme" id="theme-toggle" class="focus:outline-none"></button>
-          </li>
-        </ul>
-      </nav>
-
-      <!-- Burger wrapper (mobile) -->
-      <div id="burger-wrap">
-        <button id="menu-toggle" aria-label="Toggle Navigation">
-          <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
-        </button>
-      </div>
-
-      <!-- Floating mobile nav (positioned by JS) -->
-      <nav id="mobile-nav" aria-label="Mobile" hidden class="fixed z-50 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
-                  opacity-0 scale-95 pointer-events-none transition duration-150 origin-top-right xl:hidden">
-        <div class="p-4">
-          <ul class="space-y-2">
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#about" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
-                  <i class="fas fa-user fa-fw mr-2" aria-hidden="true"></i>
-                  <span class="text-sm lg:text-base hover:underline">About</span>
-                </span>
+        <!-- Desktop nav -->
+        <nav id="primary-nav" class="space-x-4" aria-label="Primary">
+          <ul class="flex space-x-4">
+            <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-1">
+              <a href="#about" class="nav-link">
+                <i class="fas fa-user fa-fw" aria-hidden="true"></i>
+                <span class="text-sm lg:text-base">About</span>
               </a>
             </li>
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#projects" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
-                  <i class="fas fa-code fa-fw mr-2" aria-hidden="true"></i>
-                  <span class="text-sm lg:text-base hover:underline">Projects</span>
-                </span>
+            <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-1">
+              <a href="#projects" class="nav-link">
+                <i class="fas fa-code fa-fw" aria-hidden="true"></i>
+                <span class="text-sm lg:text-base">Projects</span>
               </a>
             </li>
-            <li
-              class="flex items-center hover:bg-gray-200 dark:hover:bg-gray-500 transition-shadow duration-75 rounded-lg p-2">
-              <a href="#contact" class="flex items-center justify-between w-full">
-                <span class="flex items-center">
-                  <i class="fas fa-envelope fa-fw mr-2" aria-hidden="true"></i>
-                  <span class="text-sm lg:text-base hover:underline">Contact</span>
-                </span>
+            <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-1">
+              <a href="#tech-stack" class="nav-link">
+                <i class="fas fa-layer-group fa-fw" aria-hidden="true"></i>
+                <span class="text-sm lg:text-base">Tech Stack</span>
               </a>
             </li>
-            <li class="flex items-center hover:scale-110 duration-150 p-2">
-              <button id="theme-toggle-sidebar" class="focus:outline-none"></button>
+            <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-1">
+              <a href="#contact" class="nav-link">
+                <i class="fas fa-envelope fa-fw" aria-hidden="true"></i>
+                <span class="text-sm lg:text-base">Contact</span>
+              </a>
+            </li>
+            <li class="flex items-center hover:scale-110 duration-150">
+              <button aria-label="Toggle Theme" id="theme-toggle" class="focus:outline-none"></button>
             </li>
           </ul>
+        </nav>
+
+        <!-- Burger wrapper (mobile) -->
+        <div id="burger-wrap">
+          <button id="menu-toggle" aria-label="Toggle Navigation">
+            <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
+          </button>
         </div>
-      </nav>
 
-      <!-- Backdrop -->
-      <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
-    </div>
-  </header>
+        <!-- Floating mobile nav (positioned by JS) -->
+        <nav id="mobile-nav" aria-label="Mobile" hidden class="fixed z-50 rounded-2xl border border-gray-600 bg-white dark:bg-slate-700 shadow-xl
+                  opacity-0 scale-95 pointer-events-none transition duration-150 origin-top-right xl:hidden">
+          <div class="p-4">
+            <ul class="space-y-2">
+              <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-2">
+                <a href="#about" class="nav-link flex items-center justify-between w-full">
+                  <span class="flex items-center">
+                    <i class="fas fa-user fa-fw mr-2" aria-hidden="true"></i>
+                    <span class="text-sm lg:text-base">About</span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-2">
+                <a href="#projects" class="nav-link flex items-center justify-between w-full">
+                  <span class="flex items-center">
+                    <i class="fas fa-code fa-fw mr-2" aria-hidden="true"></i>
+                    <span class="text-sm lg:text-base">Projects</span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-2">
+                <a href="#tech-stack" class="nav-link flex items-center justify-between w-full">
+                  <span class="flex items-center">
+                    <i class="fas fa-layer-group fa-fw mr-2" aria-hidden="true"></i>
+                    <span class="text-sm lg:text-base">Tech Stack</span>
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item flex items-center transition-shadow duration-75 rounded-lg p-2">
+                <a href="#contact" class="nav-link flex items-center justify-between w-full">
+                  <span class="flex items-center">
+                    <i class="fas fa-envelope fa-fw mr-2" aria-hidden="true"></i>
+                    <span class="text-sm lg:text-base">Contact</span>
+                  </span>
+                </a>
+              </li>
+              <li class="flex items-center hover:scale-110 duration-150 p-2">
+                <button id="theme-toggle-sidebar" class="focus:outline-none"></button>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-  <!-- Main (single landmark) -->
-  <main id="main-content" tabindex="-1"
-    class="my-12 mx-4 md:mx-32 lg:mx-64 bg-white dark:bg-slate-700 border border-gray-600 rounded-2xl shadow-lg dark:shadow-xl">
-    <section id="about" class="py-12">
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-4">Hey 👋! I'm Yee Kit!</h2>
-        <p class="mb-2">I am a Bsc Computing Science Graduate. Currently working as a Cloud Engineer ☁️ 🧑🏻‍💻.</p>
-        <p class="mb-2">My interests include Software Development, DevOps, Computer Networking and Cyber Security.</p>
-        <p>I enjoy doing Full Stack Development, tinkering with hardware and software, be it servers, sbc or routers and
-          self-hosting open source projects.</p>
+        <!-- Backdrop -->
+        <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
       </div>
-    </section>
+    </header>
 
-    <section id="projects" class="py-12" data-nosnippet>
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-4">Projects</h2>
-        <p class="mb-8">A list of my projects can be found below.</p>
+    <!-- Main (single landmark) -->
+    <main id="main-content" tabindex="-1" class="glass-panel rounded-2xl">
+      <section id="about" class="section-wrap py-12">
+        <div class="container mx-auto px-6">
+          <p class="section-kicker"><i class="fas fa-circle-info" aria-hidden="true"></i>Profile</p>
+          <h2 class="text-3xl font-semibold mb-4">Hey 👋! I'm Yee Kit!</h2>
+          <p class="mb-2">🛠️ Part-Time Developer | ☁️ Full-Time Cloud Engineer</p>
+          <p class="mb-2">🌱 Interests: Cloud &amp; DevSecOps • Software Development • Networking • Cyber Security •
+            Self-Hosting</p>
+          <p class="mb-2">📖 Currently learning: DevOps / DevSecOps • Cloud Native Architecture</p>
+          <p class="mb-2">💬 Ask me about: Anything tech-related, especially cloud, infra, and systems.</p>
+          <p class="lede">⚡ Fun fact: I enjoy building systems that are cloud-native, portable, and self-hostable
+            because
+            vendor
+            lock-in is optional.</p>
+        </div>
+      </section>
 
-        <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">Flight Time Calculator</h3>
-          <p class="mb-2">A Next.js + Prisma web app for calculating flight times, transit times and total flight
-            duration between airports, supporting mutiple legs/flights in a journey. Includes timezone/DST awareness,
-            airport database with reseed, admin UI, audit logs, and snapshots.</p>
-          <p class="mb-4">Technologies used: Next.js, Prisma, Vercel</p>
-          <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
-          <div class="flex items-center mb-4">
-            <a href="https://github.com/xKhronoz/Flight-Time-Calculator" target="_blank"
-              class="flex items-center mr-2 hover:underline">
-              <span class="mr-2">View Project</span>
-              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
+      <section id="projects" class="section-wrap py-12" data-nosnippet>
+        <div class="container mx-auto px-6">
+          <p class="section-kicker"><i class="fas fa-diagram-project" aria-hidden="true"></i>Showcase</p>
+          <h2 class="text-3xl font-semibold mb-4">Projects</h2>
+          <p class="mb-8 lede">A compact portfolio of selected work with live links and source code.</p>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <h3 class="text-xl font-semibold mb-2">Flight Time Calculator</h3>
+              <p class="mb-2">A Next.js + Prisma app for calculating flight and transit duration across multi-leg routes
+                with timezone and DST awareness.</p>
+              <p class="text-sm opacity-80">Next.js • Prisma • Vercel</p>
+              <div class="project-links">
+                <a href="https://github.com/xKhronoz/Flight-Time-Calculator" target="_blank" class="project-link">
+                  <span>Source</span><i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+                </a>
+                <a href="https://flight-time-calculator.xkhronoz.dev/" target="_blank" class="project-link">
+                  <span>Live Demo</span><i class="fas fa-arrow-up-right-from-square fa-fw" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3 class="text-xl font-semibold mb-2">Smart Retrieval</h3>
+              <p class="mb-2">A full-stack LLM chatbot web app focused on practical information retrieval, developed for
+                my final year project.</p>
+              <p class="text-sm opacity-80">React • Flask • OpenAI • Supabase • Docker</p>
+              <div class="project-links">
+                <a href="https://github.com/digitalbuiltenvironment/Smart-Retrieval" target="_blank"
+                  class="project-link">
+                  <span>Source</span><i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+                </a>
+                <a href="https://smart-retrieval-demo.vercel.app" target="_blank" class="project-link">
+                  <span>Live Demo</span><i class="fas fa-arrow-up-right-from-square fa-fw" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <h3 class="text-xl font-semibold mb-2">SSH GeoIP Filter</h3>
+              <p class="mb-2">A shell utility that applies SSH GeoIP filtering with MaxMind GeoIP2 / GeoLite2 using
+                mmdblookup.</p>
+              <p class="text-sm opacity-80">Shell • MaxMind GeoIP2 • GeoLite2 • mmdblookup</p>
+              <div class="project-links">
+                <a href="https://github.com/xKhronoz/SSH-GeoIP-Filter" target="_blank" class="project-link">
+                  <span>Source</span><i class="fas fa-code-branch fa-fw" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="tech-stack" class="section-wrap py-12" data-nosnippet>
+        <div class="container mx-auto px-6">
+          <p class="section-kicker"><i class="fas fa-microchip" aria-hidden="true"></i>Toolkit</p>
+          <h2 class="text-3xl font-semibold mb-4">Tech Stack</h2>
+          <p class="mb-8 lede">Core technologies I currently work with across cloud, delivery, and application
+            development.</p>
+
+          <div class="tech-grid">
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">Cloud / Infra</h3>
+              <div class="chips">
+                <span class="chip">AWS</span><span class="chip">OCI</span><span class="chip">Cloudflare</span>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">Orchestration</h3>
+              <div class="chips">
+                <span class="chip">Kubernetes</span><span class="chip">Red Hat OpenShift</span>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">Languages</h3>
+              <div class="chips">
+                <span class="chip">Python</span><span class="chip">Java</span><span class="chip">TypeScript</span><span
+                  class="chip">C#</span><span class="chip">C++</span><span class="chip">Bash</span>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">Backend / Frontend</h3>
+              <div class="chips">
+                <span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span
+                  class="chip">Tailwind</span>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">DevOps / Deploy</h3>
+              <div class="chips">
+                <span class="chip">Docker</span><span class="chip">Podman</span><span class="chip">GitLab CI</span><span
+                  class="chip">GitHub Actions</span><span class="chip">ArgoCD</span><span class="chip">Helm</span>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3 class="text-xl font-semibold">Monitoring / Security</h3>
+              <div class="chips">
+                <span class="chip">Grafana</span><span class="chip">Prometheus</span><span
+                  class="chip">Keycloak</span><span class="chip">IAM</span><span class="chip">Zero Trust Concepts</span>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="contact" class="section-wrap py-12" data-nosnippet>
+        <div class="container mx-auto px-6">
+          <p class="section-kicker"><i class="fas fa-link" aria-hidden="true"></i>Connect</p>
+          <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
+          <div class="contact-grid">
+            <a href="https://github.com/xkhronoz" target="_blank" class="contact-link">
+              <i class="fab fa-github fa-fw mr-3 fa-xl" aria-hidden="true"></i>
+              <span>Github</span>
             </a>
-            <a href="https://flight-time-calculator.xkhronoz.dev/" target="_blank"
-              class="flex items-center hover:underline">
-              <span class="mr-2">View Demo</span>
-              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
+            <a href="https://gitlab.com/khronoz" target="_blank" class="contact-link">
+              <i class="fab fa-gitlab fa-fw mr-3 fa-xl" aria-hidden="true"></i>
+              <span>GitLab</span>
+            </a>
+            <a href="https://linkedin.com/in/goh-yee-kit" target="_blank" class="contact-link">
+              <i class="fab fa-linkedin fa-fw mr-3 fa-xl" aria-hidden="true"></i>
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>
-
-        <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">Smart Retrieval</h3>
-          <p class="mb-2">A Full Stack Large Language Model (LLM) Chatbot Web Application for Information Retrieval,
-            built as part of my Final Year Project.</p>
-          <p class="mb-4">Technologies used: React, Flask, OpenAI, Supabase, Hugging Face Spaces, Docker, Vercel</p>
-          <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
-          <div class="flex items-center mb-4">
-            <a href="https://github.com/digitalbuiltenvironment/Smart-Retrieval" target="_blank"
-              class="flex items-center mr-2 hover:underline">
-              <span class="mr-2">View Project</span>
-              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
-            </a>
-            <a href="https://smart-retrieval-demo.vercel.app" target="_blank" class="flex items-center hover:underline">
-              <span class="mr-2">View Demo</span>
-              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
-            </a>
+      </section>
+      <section id="footer" class="section-wrap py-12">
+        <div class="px-6 flex flex-auto items-center justify-center">
+          <div class="px-6">
+            <p class="text-center">&copy; Yee Kit. All rights reserved.</p>
           </div>
         </div>
-
-        <div class="project mb-8">
-          <h3 class="text-xl font-semibold mb-2 underline">SSH GeoIP Filter</h3>
-          <p class="mb-2">A SSH GeoIP Filtering script using MaxMind GeoIP2 & GeoLite2 via mmdblookup.</p>
-          <p class="mb-4">Technologies used: shell, MaxMind GeoIP2, GeoLite2, mmdblookup</p>
-          <hr class="mb-4 h-0.5 border-t-0 bg-gray-300 dark:bg-white/10 w-1/3 mr-auto" />
-          <div class="flex items-center mb-4">
-            <a href="https://github.com/xKhronoz/SSH-GeoIP-Filter" target="_blank"
-              class="flex items-center mr-2 hover:underline">
-              <span class="mr-2">View Project</span>
-              <i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="py-12" data-nosnippet>
-      <div class="container mx-auto px-6">
-        <h2 class="text-3xl font-semibold mb-8">Contact Me</h2>
-        <div class="flex items-center">
-          <a href="https://github.com/xkhronoz" target="_blank" class="flex items-center mb-4">
-            <i class="fab fa-github fa-fw mr-3 fa-xl" aria-hidden="true"></i>
-            <span class="hover:underline">Github</span>
-          </a>
-        </div>
-        <div class="flex items-center">
-          <a href="https://linkedin.com/in/goh-yee-kit" target="_blank" class="flex items-center mb-4">
-            <i class="fab fa-linkedin fa-fw mr-3 fa-xl" aria-hidden="true"></i>
-            <span class="hover:underline">LinkedIn</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer
-    class="mx-4 md:mx-32 lg:mx-64 mb-2 lg:mb-4 bg-white dark:bg-slate-700 border border-gray-600 py-6 shadow-md rounded-lg">
-    <div class="px-6 flex flex-auto items-center justify-center">
-      <div class="px-6">
-        <p class="text-center">&copy; Yee Kit. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Overlay -->
-  <div id="overlay-toggle" class="fixed inset-0 z-40 bg-gray-800/50 hidden xl:hidden"></div>
+      </section>
+    </main>
+  </div>
 
   <!-- App JS -->
   <script>
@@ -410,6 +383,15 @@
       const menuToggle = document.getElementById("menu-toggle");
       const mobileNav = document.getElementById("mobile-nav");
       const overlay = document.getElementById("overlay-toggle");
+      const siteHeader = document.querySelector(".site-header");
+
+      function syncHeaderFloatingState() {
+        if (!siteHeader) return;
+        siteHeader.classList.toggle("is-floating", window.scrollY > 8);
+      }
+
+      syncHeaderFloatingState();
+      window.addEventListener("scroll", syncHeaderFloatingState, { passive: true });
 
       function positionMenu() {
         const btn = menuToggle, menu = mobileNav;
