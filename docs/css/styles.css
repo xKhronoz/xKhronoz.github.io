@@ -1051,7 +1051,7 @@ body {
 .site-shell {
   width: min(1120px, calc(100vw - 3rem));
   margin-inline: auto;
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 1rem;
 }
 
 .glass-panel {
@@ -1123,6 +1123,16 @@ body {
   border-top-color: var(--line-dark);
 }
 
+.site-avatar {
+  border: 1px solid var(--line-light);
+  box-shadow: 0 0 0 2px var(--line-light);
+}
+
+.dark .site-avatar {
+  border-color: var(--line-dark);
+  box-shadow: 0 0 0 2px var(--line-dark);
+}
+
 #primary-nav .nav-item,
 #mobile-nav .nav-item {
   border: 1px solid transparent;
@@ -1162,6 +1172,14 @@ body {
 .dark #primary-nav .nav-item:focus-within,
 .dark #mobile-nav .nav-item:focus-within {
   border-color: var(--interactive-hover-border-dark);
+}
+
+#mobile-nav {
+  border-color: var(--line-light);
+}
+
+.dark #mobile-nav {
+  border-color: var(--line-dark);
 }
 
 .section-wrap + .section-wrap {
@@ -1380,12 +1398,17 @@ header h1 {
   #burger-wrap {
     display: block;
   }
+  #mobile-nav {
+    width: min(14rem, calc(100vw - 1rem));
+    max-height: calc(100dvh - 6rem);
+    overflow-y: auto;
+  }
 }
 
 @media (max-width: 680px) {
   .site-shell {
     width: calc(100vw - 1.25rem);
-    padding: 0.65rem 0 1.4rem;
+    padding: 0.65rem 0 0.65rem;
   }
   .projects-grid {
     grid-template-columns: 1fr;

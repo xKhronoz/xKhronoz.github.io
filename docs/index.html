@@ -91,7 +91,7 @@
     <header class="glass-panel site-header flex rounded-2xl min-h-18">
       <div class="py-4 px-6 flex flex-auto items-center justify-between">
         <div class="flex items-center gap-2">
-          <img class="rounded-full mr-1 h-12 w-12 sm:h-16 sm:w-16 xl:h-[70px] xl:w-[70px]"
+          <img class="site-avatar rounded-full mr-1 h-12 w-12 sm:h-16 sm:w-16 xl:h-[70px] xl:w-[70px]"
             src="https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=48&d=identicon"
             srcset="
                 https://gravatar.com/avatar/552a308b91f232f5e19d9dcebcd2e0efc0203bf4d32dc664a0178f0b0a19b9de?s=48&d=identicon 48w,
@@ -333,7 +333,7 @@
           <div class="contact-grid">
             <a href="https://github.com/xkhronoz" target="_blank" class="contact-link">
               <i class="fab fa-github fa-fw mr-3 fa-xl" aria-hidden="true"></i>
-              <span>Github</span>
+              <span>GitHub</span>
             </a>
             <a href="https://gitlab.com/khronoz" target="_blank" class="contact-link">
               <i class="fab fa-gitlab fa-fw mr-3 fa-xl" aria-hidden="true"></i>
@@ -407,38 +407,30 @@
         const wasHidden = menu.hidden;
         if (wasHidden) menu.hidden = false;
 
-        menu.style.maxHeight = ""; menu.style.overflowY = "";
-        menu.style.left = "0px"; menu.style.top = "0px";
-
         const btnRect = btn.getBoundingClientRect();
-        const mRect0 = menu.getBoundingClientRect();
-        const vw = window.visualViewport?.width || window.innerWidth;
-        const vh = window.visualViewport?.height || window.innerHeight;
-        const gutter = 8, offset = 8;
+        const menuRect = menu.getBoundingClientRect();
+        const viewportWidth = window.visualViewport?.width || window.innerWidth;
+        const gutter = 8;
+        const offset = 4;
 
-        let left = btnRect.right - mRect0.width;
+        let right = Math.max(gutter, viewportWidth - btnRect.right);
         let top = btnRect.bottom + offset;
         let origin = "top-right";
 
-        if (left < gutter) left = gutter;
-        if (left + mRect0.width + gutter > vw) left = Math.max(gutter, vw - mRect0.width - gutter);
-
-        if (top + mRect0.height + gutter > vh) {
-          const flipTop = btnRect.top - mRect0.height - offset;
-          if (flipTop >= gutter) {
-            top = flipTop; origin = "bottom-right";
-          } else {
-            const maxH = Math.min(mRect0.height, vh - gutter * 2);
-            menu.style.maxHeight = `${maxH}px`; menu.style.overflowY = "auto";
-            const spaceBelow = vh - (btnRect.bottom + offset) - gutter;
-            const spaceAbove = btnRect.top - offset - gutter;
-            if (spaceBelow >= spaceAbove) { top = Math.min(btnRect.bottom + offset, vh - gutter - maxH); origin = "top-right"; }
-            else { top = Math.max(gutter, btnRect.top - offset - maxH); origin = "bottom-right"; }
-          }
+        if (right + menuRect.width + gutter > viewportWidth) {
+          right = gutter;
         }
 
-        menu.style.left = `${Math.round(left)}px`;
+        if (top + menuRect.height + gutter > (window.visualViewport?.height || window.innerHeight)) {
+          top = Math.max(gutter, btnRect.top - menuRect.height - offset);
+          origin = "bottom-right";
+        }
+
+        menu.style.right = `${Math.round(right)}px`;
         menu.style.top = `${Math.round(top)}px`;
+        menu.style.left = "auto";
+        menu.style.maxHeight = "";
+        menu.style.overflowY = "";
         menu.classList.toggle("origin-top-right", origin === "top-right");
         menu.classList.toggle("origin-bottom-right", origin === "bottom-right");
 
@@ -471,14 +463,10 @@
       document.addEventListener("click", (e) => { if (isOpen() && !mobileNav.contains(e.target) && !menuToggle.contains(e.target)) closeMenu(); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape" && isOpen()) closeMenu(); });
 
-      // Reposition while open
+      // Keep the menu anchor stable while open
       ["scroll", "resize", "orientationchange"].forEach(evt =>
         window.addEventListener(evt, () => { if (isOpen()) positionMenu(); }, { passive: true })
       );
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", () => { if (isOpen()) positionMenu(); });
-        window.visualViewport.addEventListener("scroll", () => { if (isOpen()) positionMenu(); });
-      }
 
       // Close when a mobile nav link is clicked
       mobileNav.addEventListener("click", (e) => { if (e.target.closest("a")) closeMenu(); });
